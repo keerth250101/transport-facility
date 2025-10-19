@@ -17,7 +17,7 @@
     <label for="rideSelect">Select Ride <span class="required">*</span></label>
     <select id="rideSelect" [(ngModel)]="selectedRideId">
       <option [ngValue]="null">-- Choose a Ride --</option>
-      <option *ngFor="let ride of rideService.getAllRides()" [value]="ride.id">
+      <option *ngFor="let ride of rides" [value]="ride.id">
         {{ ride.vehicleType }} - {{ ride.pickupPoint }} →
         {{ ride.destination }} ({{ ride.vacantSeats }} seats left)
       </option>
@@ -40,8 +40,8 @@
 
   <!-- Available rides list -->
   <h3 style="margin-top: 2rem; color: #003a9e">Available Rides</h3>
-  <ul class="ride-list">
-    <li *ngFor="let ride of rideService.getAllRides()">
+  <ul class="ride-list" *ngIf="rides.length > 0; else noRides">
+    <li *ngFor="let ride of rides">
       <div class="details">
         {{ ride.vehicleType }} - {{ ride.pickupPoint }} →
         {{ ride.destination }} ({{ ride.vacantSeats }} seats)
@@ -49,4 +49,9 @@
       <div class="seats">{{ ride.time }}</div>
     </li>
   </ul>
+
+
+  <ng-template #noRides>
+    <p class="no-rides">No rides available.</p>
+  </ng-template>
 </div>

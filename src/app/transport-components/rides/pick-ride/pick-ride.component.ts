@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RideService } from '../services/ride.service';
+import { Ride } from '../model/ride.model';
 
 @Component({
   selector: 'app-pick-ride',
@@ -10,8 +11,11 @@ export class PickRideComponent {
   employeeId = '';
   selectedRideId?: number;
   message = '';
+  rides: Ride[] = [];
 
-  constructor(public rideService: RideService) {}
+  constructor(public rideService: RideService) {
+    this.rides = this.rideService.getTimeMatchingRides();
+  }
 
   onBookRide() {
     if (!this.employeeId || !this.selectedRideId) {

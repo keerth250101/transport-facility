@@ -1,7 +1,14 @@
 <div class="ride-container">
   <h2>Available Rides</h2>
 
-  <div class="filters">
+  <!-- Clear all rides button -->
+  <div style="margin-bottom:16px;" class="actions" *ngIf="rides.length > 0">
+    <button class="btn-outline" (click)="onClearRides()">
+      Clear All Rides
+    </button>
+  </div>
+
+  <div class="filters" *ngIf="rides.length > 0; else noRides">
     <div>
       <label>Vehicle Type:</label>
       <select [(ngModel)]="vehicleType" (change)="refresh()">
@@ -25,4 +32,8 @@
       <span class="seats">{{ ride.vacantSeats }} seats</span>
     </li>
   </ul>
+
+  <ng-template #noRides>
+    <p class="no-rides">No rides available.</p>
+  </ng-template>
 </div>
