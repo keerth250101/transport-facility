@@ -1,0 +1,52 @@
+<div class="ride-container">
+  <h2>Pick a Ride</h2>
+
+  <!-- Employee ID input -->
+  <div class="form-group">
+    <label for="employeeId">Employee ID <span class="required">*</span></label>
+    <input
+      id="employeeId"
+      type="text"
+      [(ngModel)]="employeeId"
+      placeholder="Enter your Employee ID"
+    />
+  </div>
+
+  <!-- Ride selection dropdown -->
+  <div class="form-group">
+    <label for="rideSelect">Select Ride <span class="required">*</span></label>
+    <select id="rideSelect" [(ngModel)]="selectedRideId">
+      <option [ngValue]="null">-- Choose a Ride --</option>
+      <option *ngFor="let ride of rideService.getAllRides()" [value]="ride.id">
+        {{ ride.vehicleType }} - {{ ride.pickupPoint }} →
+        {{ ride.destination }} ({{ ride.vacantSeats }} seats left)
+      </option>
+    </select>
+  </div>
+
+  <!-- Book button -->
+  <button class="btn-primary" (click)="onBookRide()">Book Ride</button>
+
+  <!-- Booking message -->
+  <p
+    *ngIf="message"
+    [ngClass]="{
+      'error-text': message.includes('not') || message.includes('cannot'),
+      'success-text': message.includes('success')
+    }"
+  >
+    {{ message }}
+  </p>
+
+  <!-- Available rides list -->
+  <h3 style="margin-top: 2rem; color: #003a9e">Available Rides</h3>
+  <ul class="ride-list">
+    <li *ngFor="let ride of rideService.getAllRides()">
+      <div class="details">
+        {{ ride.vehicleType }} - {{ ride.pickupPoint }} →
+        {{ ride.destination }} ({{ ride.vacantSeats }} seats)
+      </div>
+      <div class="seats">{{ ride.time }}</div>
+    </li>
+  </ul>
+</div>

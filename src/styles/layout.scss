@@ -1,0 +1,31 @@
+body {
+  font-family: $font-family-primary;
+  background-color: $infrrd-light-gray;
+  color: $infrrd-dark-gray;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: $space-md;
+}
+
+header {
+  background: $infrrd-dark-blue;
+  color: $infrrd-white;
+  padding: $space-md;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+footer {
+  background: $infrrd-blue;
+  color: $infrrd-white;
+  text-align: center;
+  padding: $space-sm;
+  font-size: 0.9rem;
+}

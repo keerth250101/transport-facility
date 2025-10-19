@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { RideService } from '../service/ride.service';
+import { RideService } from '../services/ride.service';
 
 @Component({
   selector: 'app-add-ride',
@@ -10,7 +10,7 @@ import { RideService } from '../service/ride.service';
 export class AddRideComponent {
   rideForm = this.fb.group({
     employeeId: ['', Validators.required],
-    vehicleType: ['Bike', Validators.required],
+    vehicleType: ['Shuttle', Validators.required],
     vehicleNo: ['', Validators.required],
     vacantSeats: [1, [Validators.required, Validators.min(1)]],
     time: ['', Validators.required],

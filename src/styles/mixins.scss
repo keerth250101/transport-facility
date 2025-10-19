@@ -1,0 +1,53 @@
+@mixin transition($time: 0.2s) {
+  transition: all $time ease-in-out;
+}
+
+@mixin button-base {
+  display: inline-block;
+  padding: $space-sm $space-lg;
+  font-weight: 500;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  @include transition();
+}
+
+@mixin card {
+  background: $infrrd-white;
+  border-radius: $radius-md;
+  box-shadow: $card-shadow;
+  padding: $space-lg;
+}
+
+@mixin input-style {
+  padding: $space-sm;
+  border: 1px solid $infrrd-mid-gray;
+  border-radius: $radius-sm;
+  font-size: 1rem;
+  &:focus {
+    border-color: $infrrd-blue;
+    outline: none;
+    box-shadow: 0 0 3px rgba($infrrd-blue, 0.3);
+  }
+}
+
+// Responsive breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+
+@mixin responsive($device) {
+  @if $device == sm {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $device == md {
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $device == lg {
+    @media (max-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+}

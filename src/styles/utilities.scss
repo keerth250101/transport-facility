@@ -1,0 +1,45 @@
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+.mt-sm {
+  margin-top: $space-sm;
+}
+.mt-md {
+  margin-top: $space-md;
+}
+.mt-lg {
+  margin-top: $space-lg;
+}
+
+.btn-primary {
+  @include button-base;
+  background-color: $infrrd-blue;
+  color: $infrrd-white;
+  &:hover {
+    background-color: $infrrd-dark-blue;
+  }
+}
+
+.btn-accent {
+  @include button-base;
+  background-color: $infrrd-orange;
+  color: $infrrd-white;
+  &:hover {
+    background-color: darken($infrrd-orange, 8%);
+  }
+}
+
+.btn-outline {
+  @include button-base;
+  background-color: transparent;
+  border: 1px solid $infrrd-blue;
+  color: $infrrd-blue;
+  &:hover {
+    background-color: $infrrd-blue;
+    color: $infrrd-white;
+  }
+}

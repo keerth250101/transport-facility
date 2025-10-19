@@ -1,0 +1,28 @@
+<div class="home-container">
+  <header class="home-header">
+    <h2>Welcome to Transport Facility</h2>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </header>
+
+  <section class="home-buttons">
+    <button class="btn-primary" (click)="navigateToAddRide()">Add Ride</button>
+    <button class="btn-accent" (click)="navigateToPickRide()">Pick Ride</button>
+    <button class="btn-outline" (click)="navigateToRideList()">
+      Available Rides
+    </button>
+  </section>
+
+  <section class="ride-summary" *ngIf="rideService.getAllRides().length > 0">
+    <h3>Today's Available Rides</h3>
+    <ul>
+      <li *ngFor="let ride of rideService.getAllRides()">
+        {{ ride.vehicleType }} - {{ ride.pickupPoint }} →
+        {{ ride.destination }} ({{ ride.vacantSeats }} seats)
+      </li>
+    </ul>
+  </section>
+
+  <p *ngIf="rideService.getAllRides().length === 0" class="no-rides">
+    No rides available yet.
+  </p>
+</div>

@@ -1,0 +1,33 @@
+.login-container {
+    @include card;
+    max-width: 400px;
+    margin: $space-xl auto;
+  
+    h2 {
+      color: $infrrd-dark-blue;
+      text-align: center;
+      margin-bottom: $space-md;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+  
+      input {
+        @include input-style;
+        margin-bottom: $space-md;
+      }
+  
+      button {
+        @extend .btn-primary;
+      }
+  
+      .error {
+        color: $error-red;
+        text-align: center;
+        font-size: 0.9rem;
+        margin-top: $space-sm;
+      }
+    }
+  }
+  

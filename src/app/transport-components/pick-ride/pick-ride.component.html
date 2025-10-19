@@ -1,9 +1,0 @@
-<h2>Pick a Ride</h2>
-<input [(ngModel)]="employeeId" placeholder="Employee ID" />
-<select [(ngModel)]="selectedRideId">
-  <option *ngFor="let r of rideService.getAllRides()" [value]="r.id">
-    {{ r.vehicleType }} - {{ r.pickupPoint }} to {{ r.destination }} ({{ r.vacantSeats }} seats left)
-  </option>
-</select>
-<button (click)="onBookRide()">Book Ride</button>
-<p>{{ message }}</p>
