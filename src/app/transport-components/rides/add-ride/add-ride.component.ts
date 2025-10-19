@@ -10,7 +10,7 @@ import { RideService } from '../services/ride.service';
 export class AddRideComponent {
   rideForm = this.fb.group({
     employeeId: ['', Validators.required],
-    vehicleType: ['Shuttle', Validators.required],
+    vehicleType: ['Bike', Validators.required],
     vehicleNo: ['', Validators.required],
     vacantSeats: [1, [Validators.required, Validators.min(1)]],
     time: ['', Validators.required],
