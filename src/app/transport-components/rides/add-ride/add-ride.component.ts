@@ -5,7 +5,6 @@ import { RideService } from '../services/ride.service';
 @Component({
   selector: 'app-add-ride',
   templateUrl: './add-ride.component.html',
-  styleUrl: './add-ride.component.scss',
 })
 export class AddRideComponent {
   rideForm = this.fb.group({

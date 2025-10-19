@@ -8,7 +8,7 @@ export class AuthService {
   constructor(private router: Router) {}
 
   login(username: string, password: string): boolean {
-    // For assignment: hardcode credentials (can replace with API later)
+    // For assignment: hardcoded the credentials 
     if (username === 'admin' && password === 'admin') {
       this.loggedIn = true;
       localStorage.setItem('isLoggedIn', 'true');

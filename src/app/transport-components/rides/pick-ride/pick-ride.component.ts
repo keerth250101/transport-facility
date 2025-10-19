@@ -5,7 +5,6 @@ import { Ride } from '../model/ride.model';
 @Component({
   selector: 'app-pick-ride',
   templateUrl: './pick-ride.component.html',
-  styleUrl: './pick-ride.component.scss'
 })
 export class PickRideComponent {
   employeeId = '';
