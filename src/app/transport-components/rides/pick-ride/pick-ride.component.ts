@@ -21,7 +21,9 @@ export class PickRideComponent {
       this.message = 'Please select a ride and enter Employee ID.';
       return;
     }
-    this.message = this.rideService.bookRide(this.selectedRideId, this.employeeId);
+    this.message = this.rideService.bookRide(
+      this.selectedRideId,
+      this.employeeId
+    );
   }
-
 }

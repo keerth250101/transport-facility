@@ -28,7 +28,7 @@ export class RideService {
     const newRide: Ride = {
       ...ride,
       id: Date.now(),
-      bookedEmployees: []
+      bookedEmployees: [],
     };
     this.rides.push(newRide);
     this.saveToStorage();
@@ -37,12 +37,12 @@ export class RideService {
   /**  Book a ride by employee */
   bookRide(rideId: number | string, employeeId: string): string {
     const id = Number(rideId);
-    const ride = this.rides.find(r => r.id === id);
-    console.log(ride, rideId);
+    const ride = this.rides.find((r) => r.id === id);
 
     if (!ride) return 'Ride not found';
     if (ride.employeeId === employeeId) return 'You cannot book your own ride';
-    if (ride.bookedEmployees.includes(employeeId)) return 'You already booked this ride';
+    if (ride.bookedEmployees.includes(employeeId))
+      return 'You already booked this ride';
     if (ride.vacantSeats === 0) return 'No seats available';
 
     ride.bookedEmployees.push(employeeId);
@@ -54,12 +54,14 @@ export class RideService {
   /** Filter rides by vehicle type or time (manual filter) */
   filterRides(vehicleType?: string, targetTime?: string) {
     let filtered = [...this.rides];
-    if (vehicleType) filtered = filtered.filter(r => r.vehicleType === vehicleType);
+    if (vehicleType)
+      filtered = filtered.filter((r) => r.vehicleType === vehicleType);
     if (targetTime) {
       const target = new Date(`1970-01-01T${targetTime}:00`);
-      filtered = filtered.filter(r => {
+      filtered = filtered.filter((r) => {
         const rideTime = new Date(`1970-01-01T${r.time}:00`);
-        const diff = Math.abs(rideTime.getTime() - target.getTime()) / (1000 * 60);
+        const diff =
+          Math.abs(rideTime.getTime() - target.getTime()) / (1000 * 60);
         return diff <= 60;
       });
     }
@@ -71,7 +73,7 @@ export class RideService {
     const now = new Date();
     const oneHourMs = 60 * 60 * 1000; // 60 minutes buffer
 
-    return this.rides.filter(ride => {
+    return this.rides.filter((ride) => {
       if (!ride.time) return false;
       const [hours, minutes] = ride.time.split(':').map(Number);
       const rideTime = new Date();
